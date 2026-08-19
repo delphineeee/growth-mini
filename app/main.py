@@ -14,12 +14,12 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "raw_jds"
 STATIC_DIR = ROOT / "static"
 
-app = FastAPI(title="Growth Mini", version="0.1.0")
+app = FastAPI(title="Growth Mini", version="0.2.0")
 
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"status": "ok", "version": "0.1.0"}
+    return {"status": "ok", "version": "0.2.0"}
 
 
 @app.get("/api/dataset")

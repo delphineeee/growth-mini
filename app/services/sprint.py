@@ -47,9 +47,10 @@ def generate_sprint(skill: str, daily_minutes: int) -> dict:
 
 
 def build_report(estimated_minutes: int, checkins: list[dict]) -> dict:
-    completed = sum(1 for item in checkins if item.get("completed"))
-    actual = sum(item.get("actual_minutes", 0) for item in checkins)
-    artifacts = [item.get("artifact_url") for item in checkins if item.get("artifact_url")]
+    entries = sorted(checkins, key=lambda item: item.get("day", 0))
+    completed = sum(1 for item in entries if item.get("completed"))
+    actual = sum(item.get("actual_minutes", 0) for item in entries)
+    artifacts = [item.get("artifact_url") for item in entries if item.get("artifact_url")]
     completion_rate = round(completed / 7 * 100, 1)
     estimation_error = None
     if estimated_minutes:
@@ -62,5 +63,16 @@ def build_report(estimated_minutes: int, checkins: list[dict]) -> dict:
         "estimation_error_percent": estimation_error,
         "artifact_count": len(artifacts),
         "artifacts": artifacts,
-        "evidence_level": "verified" if completed >= 6 and artifacts else "claimed" if completed >= 3 else "none",
+        "note_count": sum(1 for item in entries if item.get("note")),
+        "recorded_days": sum(
+            1
+            for item in entries
+            if item.get("completed")
+            or item.get("actual_minutes")
+            or item.get("note")
+            or item.get("blocker")
+            or item.get("next_step")
+            or item.get("artifact_url")
+        ),
+        "checkins": entries,
     }

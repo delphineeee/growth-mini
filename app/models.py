@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field
 
 
 EvidenceStatus = Literal["verified", "claimed", "none"]
@@ -31,6 +31,8 @@ class CheckIn(BaseModel):
     actual_minutes: int = Field(default=0, ge=0, le=1440)
     artifact_url: str = ""
     note: str = ""
+    blocker: str = ""
+    next_step: str = ""
 
 
 class ReportRequest(BaseModel):
