@@ -2,11 +2,11 @@ textarea {
   width: 100%;
   resize: vertical;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 3px;
   padding: 11px 12px;
-  background: #fffdfa;
+  background: rgba(253, 249, 232, 0.86);
   color: var(--ink);
-  font: 14px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font: 14px/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 .checkin-summary {
