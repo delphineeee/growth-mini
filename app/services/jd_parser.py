@@ -13,6 +13,7 @@ class JDRecord:
     title: str
     location: str
     source_url: str
+    source_type: str
     collected_at: str
     role_family: str
     content: str
@@ -53,6 +54,11 @@ def _metadata(text: str, label: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def _collection_month(value: str) -> str:
+    match = re.match(r"^(\d{4}-\d{2})", value)
+    return match.group(1) if match else value
+
+
 def _role_family(title: str, content: str) -> str:
     if "产品" in title:
         return "product"
@@ -74,7 +80,8 @@ def parse_jd_file(path: Path, root: Path) -> JDRecord:
         title=title,
         location=_metadata(text, "工作地点"),
         source_url=_metadata(text, "原始链接"),
-        collected_at=_metadata(text, "收集日期"),
+        source_type=_metadata(text, "来源类型") or "未标注",
+        collected_at=_collection_month(_metadata(text, "收集日期")),
         role_family=_role_family(title, content),
         content=content,
         source_path=str(path.relative_to(root)),
@@ -122,6 +129,7 @@ def build_matrix(records: list[JDRecord]) -> list[dict]:
                     "excerpt": line[:140],
                     "source_path": record.source_path,
                     "source_url": record.source_url,
+                    "source_type": record.source_type if record.source_url else f"{record.source_type}（链接未保留）",
                 }
                 if not existing or rank[kind] > rank[existing["type"]]:
                     found[skill][record.id] = evidence

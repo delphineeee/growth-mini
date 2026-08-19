@@ -6,11 +6,13 @@ from app.services.jd_parser import build_matrix, load_jds
 DATA_DIR = Path(__file__).resolve().parents[1] / "data" / "raw_jds"
 
 
-def test_dataset_contains_ten_jds():
+def test_dataset_contains_eleven_jds():
     records = load_jds(DATA_DIR)
-    assert len(records) == 10
+    assert len(records) == 11
     assert all(record.company for record in records)
     assert all(record.title for record in records)
+    assert all(record.collected_at == "2026-08" for record in records)
+    assert all(record.source_type for record in records)
 
 
 def test_matrix_is_traceable():
