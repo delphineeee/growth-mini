@@ -1,0 +1,1 @@
+"""Growth Mini application package."""
