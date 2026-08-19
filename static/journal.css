@@ -1,0 +1,58 @@
+textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 12px;
+  background: #fffdfa;
+  color: var(--ink);
+  font: 14px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.checkin-summary {
+  display: grid;
+  grid-template-columns: 150px 170px 1fr;
+  gap: 12px;
+  align-items: end;
+  margin: 16px 0 14px;
+}
+
+.done-field {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  gap: 8px;
+}
+
+.done-field input {
+  width: auto;
+}
+
+.journal-field {
+  margin-top: 8px;
+}
+
+.reflection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.report-actions .primary,
+.report-actions .secondary {
+  margin-top: 18px;
+}
+
+@media (max-width: 820px) {
+  .checkin-summary,
+  .reflection-grid {
+    grid-template-columns: 1fr;
+  }
+}

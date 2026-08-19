@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="从真实岗位要求到7天可验证作品的证据驱动职业冲刺工具。">
-  <title>Growth Mini · 证据驱动的7天成长冲刺</title>
+  <meta name="description" content="从真实岗位要求到7天学习证据档案。">
+  <title>Growth Mini · 7天学习证据日志</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/journal.css">
 </head>
 <body>
   <div class="glow glow-a"></div><div class="glow glow-b"></div>
   <header class="hero shell">
-    <nav><span class="brand">Growth <i>Mini</i></span><span class="version">Evidence Sprint · v0.1</span></nav>
+    <nav><span class="brand">Growth <i>Mini</i></span><span class="version">Evidence Log · v0.2</span></nav>
     <div class="hero-grid">
-      <div><p class="eyebrow">Evidence before advice</p><h1>不预测你的未来，<br>只帮你做出下一份证据。</h1><p class="lede">基于真实 JD 统计岗位要求，对照你的已有作品，选择一个最值得补的缺口，并在7天内完成可检查的成果。</p></div>
+      <div><p class="eyebrow">Evidence before advice</p><h1>不判断你学会多少，<br>只帮你留下学习证据。</h1><p class="lede">从真实 JD 中选择一个值得投入的方向，用7天记录时间、笔记、问题与产物，最后带走一份属于自己的 Markdown 学习档案。</p></div>
       <div class="formula-card"><p>透明优先级</p><strong>岗位权重 × 证据缺口 × 100</strong><small>必须要求 1.0 · 职责 0.8 · 加分项 0.6<br>有作品 0 · 仅自述 0.55 · 无证据 1.0</small></div>
     </div>
   </header>
@@ -35,9 +36,9 @@
       <div class="section-head"><div><span class="step-no">03</span><p class="eyebrow">Transparent ranking</p><h2>最值得补的能力</h2></div><p>排名只回答“在当前JD样本里，你最缺哪项可证明的能力”，不等同于录用概率，也不是个人价值评分。</p></div><div class="priority-grid" id="priorityList"></div>
     </section>
     <section class="step hidden" id="step-sprint">
-      <div class="section-head"><div><span class="step-no">04</span><p class="eyebrow">Seven-day sprint</p><h2>7天作品冲刺</h2></div><p>每一天都以可验收成果结束。实际完成情况保存在你的浏览器中，不上传个人记录。</p></div>
+      <div class="section-head"><div><span class="step-no">04</span><p class="eyebrow">Seven-day evidence log</p><h2>7天学习证据日志</h2></div><p>每天留下时长、Markdown 笔记、阻塞和产物。记录保存在你的浏览器中，不上传个人内容，也不自动判断掌握程度。</p></div>
       <div class="card sprint-config"><label>目标能力<select id="sprintSkill"></select></label><label>每天可用分钟<input id="dailyMinutes" type="number" min="30" max="360" value="90"></label><button class="primary compact" id="sprintButton">生成冲刺</button></div>
-      <div id="sprintResult"></div><button class="secondary hidden" id="reportButton">生成结项证据报告</button><div id="reportResult"></div>
+      <div id="sprintResult"></div><div class="report-actions"><button class="secondary hidden" id="reportButton">生成结项学习档案</button><button class="primary hidden" id="exportButton">下载 Markdown</button></div><div id="reportResult"></div>
     </section>
   </main>
   <footer class="shell">Growth Mini 的结论只来自当前 JD 样本和用户提交的证据；数据变化时，应重新计算。</footer>
